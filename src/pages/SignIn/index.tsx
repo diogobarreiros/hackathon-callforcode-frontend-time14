@@ -16,11 +16,18 @@ import { useNavigation } from '@react-navigation/native';
 
 import styles from './styles';
 
-const Home = () => {
+const SignIn = () => {
   const navigation = useNavigation();
 
-  const [uf, setUf] = useState('');
-  const [city, setCity] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  function handleNavigateToHome() {
+    navigation.navigate('Home', {
+      email,
+      password,
+    });
+  }
 
   return (
     <KeyboardAvoidingView
@@ -37,23 +44,38 @@ const Home = () => {
 
           <View>
             <Text style={styles.title}>
-              Escolha para quem você quer entregar o seu lixo.
+              Separe seu lixo da maneira correta e preserve o nosso planeta
+            </Text>
+            <Text style={styles.description}>
+              Ajudamos pessoas a encontrarem pontos de coleta ou catadores de forma
+              eficiente.
             </Text>
           </View>
         </View>
 
         <View style={styles.footer}>
-          <RectButton style={styles.button}>
+          <TextInput
+            style={styles.input}
+            placeholder="Digite seu e-mail"
+            value={email}
+            onChangeText={setEmail}
+            autoCorrect={false}
+          />
+
+          <TextInput
+            style={styles.input}
+            placeholder="Digite a sua senha"
+            value={password}
+            onChangeText={setPassword}
+            autoCorrect={false}
+            secureTextEntry={true}
+          />
+
+          <RectButton style={styles.button} onPress={handleNavigateToHome}>
             <View style={styles.buttonIcon}>
               <Feather name="arrow-right" color="#fff" size={24} />
             </View>
-            <Text style={styles.buttonText}>Clique aqui para um catador ou empresa busque seu lixo</Text>
-          </RectButton>
-          <RectButton style={styles.button}>
-            <View style={styles.buttonIcon}>
-              <Feather name="arrow-right" color="#fff" size={24} />
-            </View>
-            <Text style={styles.buttonText}>Entregue seu lixo em um ponto de coleta</Text>
+            <Text style={styles.buttonText}>Entrar</Text>
           </RectButton>
         </View>
       </ImageBackground>
@@ -61,4 +83,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default SignIn;
