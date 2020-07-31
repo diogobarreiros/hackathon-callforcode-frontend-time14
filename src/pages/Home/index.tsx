@@ -19,8 +19,9 @@ import styles from './styles';
 const Home = () => {
   const navigation = useNavigation();
 
-  const [uf, setUf] = useState('');
-  const [city, setCity] = useState('');
+  function handleNavigateToRecyclers() {
+    navigation.navigate('Recyclers');
+  }
 
   return (
     <KeyboardAvoidingView
@@ -49,7 +50,7 @@ const Home = () => {
             </View>
             <Text style={styles.buttonText}>Clique aqui para um catador ou empresa busque seu lixo</Text>
           </RectButton>
-          <RectButton style={styles.button}>
+          <RectButton style={styles.button}  onPress={handleNavigateToRecyclers}>
             <View style={styles.buttonIcon}>
               <Feather name="arrow-right" color="#fff" size={24} />
             </View>
