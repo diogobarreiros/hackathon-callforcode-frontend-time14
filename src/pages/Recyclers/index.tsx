@@ -32,11 +32,6 @@ interface Recycler {
   longitude: number;
 }
 
-interface Params {
-  uf: string;
-  city: string;
-}
-
 const Recyclers = () => {
   const navigation = useNavigation();
 
